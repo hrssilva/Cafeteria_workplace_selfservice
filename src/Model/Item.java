@@ -6,14 +6,16 @@ public class Item {
     private String nome;
     private float valor;
     private int quantidade;
+    private boolean alcoolico;
 
 
-    public Item(int ID, String nome, float valor, int quantidade)
+    public Item(int ID, String nome, float valor, int quantidade, boolean alcoolico)
     {
         this.ID = ID;
         this.nome = nome;
         this.valor = valor;
         this.quantidade = quantidade;
+        this.alcoolico = alcoolico;
     }
 
 
@@ -47,6 +49,11 @@ public class Item {
         quantidade = quantidade + diferenca;
 
         return quantidade;
+    }
+
+    public boolean isAlcoolico()
+    {
+        return alcoolico;
     }
 
     

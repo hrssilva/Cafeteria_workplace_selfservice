@@ -17,16 +17,15 @@ public class App {
             1 comanda sera criada.
             3 itens serao inicializados e adicionados a comanda.
             A comanda sera impressa no terminal.
-
-            TODO: Ainda deve ser adicionada a logica relacionada a utilizacao do wifi
+            TODO: View e Controller
             
         */
         Model model = new Model();
-        Item item0 = new Item(0, "agua", 2.49f, 1);
-        Item item1 = new Item(1, "salgado", 8.99f, 1);
-        Item item2 = new Item(0, "agua", 2.49f, 1);
+        Item item0 = new Item(0, "agua", 2.49f, 1, false);
+        Item item1 = new Item(1, "salgado", 8.99f, 1, false);
+        Item item2 = new Item(0, "agua", 2.49f, 1, false);
 
-        String ID = model.CriarComanda();
+        String ID = model.CriarComanda(16);
         Comanda comanda = model.getComandaAtiva(ID);
         comanda.AdicionarItem(item0);
         comanda.AdicionarItem(item1);

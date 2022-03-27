@@ -3,7 +3,6 @@ package src.Model;
 import java.util.HashMap;
 import java.util.Map;
 
-//TODO: Ainda deve ser adicionada a logica relacionada a utilizacao do wifi
 // Aglomerado das funcionalidades do modelo
 public class Model {
     /*
@@ -19,7 +18,7 @@ public class Model {
         comandasInativas = new HashMap<String, Comanda>();
     }
 
-    public String CriarComanda()
+    public String CriarComanda(int idade)
     {
         int n = Comanda.getTamanhoID();
         int index;
@@ -39,7 +38,7 @@ public class Model {
     
         } while(comandasAtivas.containsKey(ID) || comandasInativas.containsKey(ID));
 
-        Comanda comanda = new Comanda(ID);
+        Comanda comanda = new Comanda(ID, idade);
         
         comandasAtivas.put(ID, comanda);
 
