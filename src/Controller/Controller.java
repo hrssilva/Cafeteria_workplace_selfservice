@@ -1,7 +1,7 @@
 package src.Controller;
 
 // Aglomerado das funcionalidades do controlador
-public class controller {
+public class Controller {
     /*
         -> Lidar com input do usuario (recebido pela view) utilizando os metodos da Model
         -> Selecionar e organizar a View, assim como repassar as resolucoes da Model para ela
