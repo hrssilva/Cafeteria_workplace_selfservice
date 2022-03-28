@@ -23,8 +23,6 @@ public class App {
             A comanda sera atualizada no modelo
             ------------------------------
             A execucao seguira o fluxo normal, mas a logica do modelo nao sera atualizada.
-            TODO: View e Controller
-            
         */
         Model model = new Model();
         View view = new TerminalClientView();
@@ -42,7 +40,8 @@ public class App {
 
         model.AtualizarComandaAtiva(ID, comanda);
 
-        controller.VisualizarComanda(ID); // Apenas para proposito de teste
+        // Apenas para proposito de teste
+        System.out.println(ID); 
 
         controller.StartView();
 

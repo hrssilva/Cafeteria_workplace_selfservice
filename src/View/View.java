@@ -36,4 +36,8 @@ public abstract class View {
     public abstract void clearError();
 
     public abstract int getActor();
+
+    public abstract int getOP();
+
+    public abstract String getTextInput();
 }

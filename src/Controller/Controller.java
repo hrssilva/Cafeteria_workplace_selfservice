@@ -1,7 +1,6 @@
 package src.Controller;
 
 import java.util.Map;
-import java.util.Scanner;
 
 import src.Model.Comanda;
 import src.Model.Model;
@@ -35,14 +34,17 @@ public class Controller {
     {
         visao.clearError();
         visao.Render();
-        Scanner input = new Scanner(System.in);
 
-        int op = input.nextInt();
+        String in = visao.getTextInput();
+        int op = visao.getOP();
+        
+
+        VisualizarComanda(in);
 
         if (visao.isFlag(op))
         {
             visao.setFlag(op, true);
-            visao.Render();
+            //visao.Render();
         }
         else
         {
@@ -69,10 +71,16 @@ public class Controller {
         }
     }
 
-    public void VisualizarComanda(String ID)
+    public boolean VisualizarComanda(String ID)
     {
-        Comanda comanda = modelo.getComandaAtiva(ID);
-        visao.setComanda(comanda);
+        Comanda comanda;
+        
+        if((comanda = modelo.getComandaAtiva(ID)) != null)
+        {
+            visao.setComanda(comanda);
+            return true;
+        }
+        return false;
     }
 
     public boolean ViewIsRunning()

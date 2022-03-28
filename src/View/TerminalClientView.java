@@ -1,7 +1,11 @@
 package src.View;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 import src.Model.Comanda;
 
@@ -12,6 +16,8 @@ public class TerminalClientView extends View{
     private boolean error;
     private boolean critical;
     private String errorMsg;
+    private int currentOperation;
+    private String inputTxt;
 
     public TerminalClientView()
     {
@@ -19,7 +25,9 @@ public class TerminalClientView extends View{
         error = false;
         critical = false;
         errorMsg = new String();
+        inputTxt = new String();
         comanda = new Comanda("", 0);
+        currentOperation = ClientViewEnum.NOP.ordinal();
         flags = new HashMap<Integer, Boolean>();
         for (ClientViewEnum e : ClientViewEnum.values())
         {
@@ -37,8 +45,13 @@ public class TerminalClientView extends View{
     {
         final int ENCERRAR = ClientViewEnum.ENCERRAR_SESSAO.ordinal();
         final int VISUALIZAR = ClientViewEnum.VISUZLIZAR_COMANDA.ordinal();
+        final int INFORMAR = ClientViewEnum.INFORMAR_COMANDA.ordinal();
+        final int NOP = ClientViewEnum.NOP.ordinal();
+        inputTxt = new String();
 
         String output = new String();
+
+        BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
         if(error)
         {
@@ -57,15 +70,46 @@ public class TerminalClientView extends View{
         else if(flags.get(VISUALIZAR))
         {
             output = String.format("Comanda: %s", comanda.toString());
+            System.out.println(output);
+
             flags.replace(VISUALIZAR, false);
+            currentOperation = NOP;
+        }
+        else if(flags.get(INFORMAR))
+        {
+            output = String.format("Informe o numero da comanda:");
+            System.out.println(output);
+
+            
+            try {
+                inputTxt = input.readLine();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            
+            flags.replace(INFORMAR, false);
+            currentOperation = VISUALIZAR;
+            System.out.println(currentOperation);
         }
         else
         {
-            output = String.format("Escolha a operacao:\n%d - Visualizar Comanda\n%d - Encerrar Sessao", 
-                                    ClientViewEnum.VISUZLIZAR_COMANDA.ordinal(), ClientViewEnum.ENCERRAR_SESSAO.ordinal());
+            output = String.format("Escolha a operacao:\n%d - Visualizar Comanda\n%d - Encerrar Sessao", INFORMAR, ENCERRAR);
+            System.out.println(output);
+
+            
+            //String in = input.nextLine();
+            try {
+                currentOperation = Integer.parseInt(input.readLine());
+            } catch (NumberFormatException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+           
         }
-        
-        System.out.println(output);
 
         return true;
     }
@@ -131,6 +175,16 @@ public class TerminalClientView extends View{
     public int getActor()
     {
         return CLIENTE;
+    }
+
+    public int getOP()
+    {
+        return currentOperation;
+    }
+
+    public String getTextInput()
+    {
+        return inputTxt;
     }
     
 }
