@@ -17,7 +17,7 @@ public class Comanda {
     private final float millisToMinutes = 1000 * 60;
     private boolean isTimerPaused = true;
 
-    Comanda(String ID, int idade)
+    public Comanda(String ID, int idade)
     {
         this.ID = ID;
         this.idadeCliente = idade;

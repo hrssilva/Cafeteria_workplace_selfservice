@@ -63,4 +63,9 @@ public class Model {
         return comandasAtivas.get(ID);
     }
 
+    public Comanda AtualizarComandaAtiva(String ID, Comanda comanda)
+    {
+        return comandasAtivas.replace(ID, comanda);
+    }
+
 }
