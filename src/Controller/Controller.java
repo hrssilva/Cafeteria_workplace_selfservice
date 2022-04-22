@@ -44,12 +44,10 @@ public class Controller {
         if (visao.isFlag(op))
         {
             visao.setFlag(op, true);
-            //visao.Render();
         }
         else
         {
             visao.ErrorMessage("Opcao invalida!", false);
-            visao.Render();
         }
 
     }

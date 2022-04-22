@@ -114,7 +114,7 @@ public class Comanda {
         s = s + String.format("%s:", ID);
         for (Item item : itens)
         {
-            s = s + String.format("{%d,%s,%f,%d},", item.getID(), item.getNome(), item.getValor(), item.getQuantidade());
+            s = s + String.format("{%s},", item.toString());
         }
 
         s = s + String.format("WIFI_MINUTOS=%f,TOTAL=%f;", elapsedMinutes, this.getTotal());

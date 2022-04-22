@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
 
 import src.Model.Comanda;
 
@@ -44,7 +43,7 @@ public class TerminalClientView extends View{
     public boolean Render()
     {
         final int ENCERRAR = ClientViewEnum.ENCERRAR_SESSAO.ordinal();
-        final int VISUALIZAR = ClientViewEnum.VISUZLIZAR_COMANDA.ordinal();
+        final int VISUALIZAR = ClientViewEnum.VISUALIZAR_COMANDA.ordinal();
         final int INFORMAR = ClientViewEnum.INFORMAR_COMANDA.ordinal();
         final int NOP = ClientViewEnum.NOP.ordinal();
         inputTxt = new String();
@@ -90,7 +89,6 @@ public class TerminalClientView extends View{
             
             flags.replace(INFORMAR, false);
             currentOperation = VISUALIZAR;
-            System.out.println(currentOperation);
         }
         else
         {
@@ -98,7 +96,6 @@ public class TerminalClientView extends View{
             System.out.println(output);
 
             
-            //String in = input.nextLine();
             try {
                 currentOperation = Integer.parseInt(input.readLine());
             } catch (NumberFormatException e) {
@@ -109,6 +106,13 @@ public class TerminalClientView extends View{
                 e.printStackTrace();
             }
            
+        }
+
+        try {
+            input.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
 
         return true;

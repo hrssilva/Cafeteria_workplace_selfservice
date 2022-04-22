@@ -1,5 +1,6 @@
 package src.Model;
 
+
 // Classe que representa um item no estoque ou na comanda
 public class Item {
     private int ID;
@@ -18,6 +19,14 @@ public class Item {
         this.alcoolico = alcoolico;
     }
 
+    public Item()
+    {
+        this.ID = -1;
+        this.nome = new String();
+        this.valor = -1;
+        this.quantidade = -1;
+        this.alcoolico = false;
+    }
 
     public int getID()
     {
@@ -56,5 +65,21 @@ public class Item {
         return alcoolico;
     }
 
-    
+    public String toString()
+    {
+        return String.format("%d,%s,%f,%d", ID, nome, valor, quantidade);
+    }
+
+    public Item fromString(String itemString)
+    {
+        String[] stringList = itemString.split(",");
+
+        ID = Integer.parseInt(stringList[0]);
+        nome = stringList[1];
+        valor = Float.parseFloat(stringList[2]);
+        quantidade = Integer.parseInt(stringList[3]);
+
+        return this;
+    }
+
 }
