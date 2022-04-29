@@ -1,8 +1,10 @@
 package src.Model;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -151,5 +153,39 @@ public class Model {
     public void changeStockItem(Item item)
     {
         stock.replace(item.getID(), item);
+    }
+
+    public void WriteStockToFile(String filename)
+    {
+        try {
+            BufferedWriter output = new BufferedWriter(new FileWriter(filename));
+            for (Item item : stock.values())
+            {
+                output.write(item.toString());
+                output.newLine();
+            }
+
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        };
+
+    }
+
+    public void LogComandas(String filename)
+    {
+        try {
+            BufferedWriter output = new BufferedWriter(new FileWriter(filename));
+            for (Comanda item : getListaComandas())
+            {
+                output.write(item.toString());
+                output.newLine();
+            }
+
+            output.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        };
+
     }
 }

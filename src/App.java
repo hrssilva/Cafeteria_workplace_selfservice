@@ -40,6 +40,11 @@ public class App {
 
         model.AtualizarComandaAtiva(ID, comanda);
 
+        model.addStockItem(item0);
+        model.addStockItem(item1);
+        model.addStockItem(item2);
+        model.WriteStockToFile("./stock.txt");
+        model.LogComandas("./comandas.txt");
         // Apenas para proposito de teste
         System.out.println(ID); 
 
