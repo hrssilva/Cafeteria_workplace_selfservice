@@ -1,0 +1,1 @@
+4423:{0,agua,2.49,2},{1,salgado,8.99,1},WIFI_MINUTOS=0.0,TOTAL=13.97;

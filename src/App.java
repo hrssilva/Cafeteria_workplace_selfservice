@@ -1,12 +1,17 @@
 package src;
 
-import src.Controller.Controller;
 import src.Model.Comanda;
 import src.Model.Item;
 import src.Model.Model;
-import src.View.TerminalClientView;
-import src.View.View;
+import src.View.ClientView;
+import src.View.ClerkView;
+import src.View.ManagerView;
+import src.Controller.ClientController;
+import src.Controller.ClerkController;
+import src.Controller.ManagerController;
 
+import src.Controller.TestController;
+import src.View.TestView;
 public class App {
     
     public static void main(String args[])
@@ -25,8 +30,12 @@ public class App {
             A execucao seguira o fluxo normal, mas a logica do modelo nao sera atualizada.
         */
         Model model = new Model();
-        View view = new TerminalClientView();
-        Controller controller = new Controller(model, view);
+        ClientView clientView = new ClientView("Cliente");
+        //TestView view2 = new TestView("Atendente");
+        //TestView view3 = new TestView("Gerente");
+        ClientController clientController = new ClientController(model, clientView);
+        //TestController controller2 = new TestController(model, view2);
+        //TestController controller3 = new TestController(model, view3);
         
         Item item0 = new Item(0, "agua", 2.49f, 1, false);
         Item item1 = new Item(1, "salgado", 8.99f, 1, false);
@@ -48,12 +57,9 @@ public class App {
         // Apenas para proposito de teste
         System.out.println(ID); 
 
-        controller.StartView();
-
-        while(controller.ViewIsRunning())
-        {
-            controller.UpdateView();
-        }
+        clientController.initController();
+        //controller2.initController();
+        //controller3.initController();
         
     }
 

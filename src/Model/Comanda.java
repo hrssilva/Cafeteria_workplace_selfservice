@@ -10,7 +10,7 @@ public class Comanda {
     private final float valorWifiHora = 5;
     private String ID;
     private List<Item> itens;
-    private int idadeCliente; // Necessario para compra de bebidas alcoolicas
+    private int idadeCliente, legalAge = 18; // Necessario para compra de bebidas alcoolicas
     //Temporizadores em minutos
     private float wifiTimer = 0;
     private float elapsedMinutes = 0;
@@ -38,7 +38,7 @@ public class Comanda {
     {
         boolean add=true;
 
-        if(item.isAlcoolico() && idadeCliente < 18)
+        if(item.isAlcoolico() && idadeCliente < legalAge)
         {
             return false;
         }
@@ -49,15 +49,15 @@ public class Comanda {
             if (current.getID() == item.getID())
             {
                 add = false;
-                current.MudarQuantidade(item.getQuantidade());
-                itens.set(i, current);
+                current.MudarQuantidade(1);
                 break;
             }
         }
 
         if(add)
         {
-            itens.add(item);
+            Item copy = new Item(item);
+            itens.add(copy);
         }
 
         return true;
@@ -117,8 +117,18 @@ public class Comanda {
             s = s + String.format("{%s},", item.toString());
         }
 
-        s = s + String.format("WIFI_MINUTOS=%f,TOTAL=%f;", elapsedMinutes, this.getTotal());
+        s = s + String.format("WIFI_MINUTOS=%.1f,TOTAL=%.2f;", elapsedMinutes, this.getTotal());
 
         return s;
+    }
+
+    public void setLegalAge(int idade)
+    {
+        legalAge = idade;
+    }
+
+    public boolean isLegalAge()
+    {
+        return idadeCliente >= legalAge;
     }
 }

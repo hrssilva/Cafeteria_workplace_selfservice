@@ -28,6 +28,15 @@ public class Item {
         this.alcoolico = false;
     }
 
+    public Item(Item another)
+    {
+        this.ID = another.ID;
+        this.nome = another.nome;
+        this.valor = another.valor;
+        this.quantidade = another.quantidade;
+        this.alcoolico = another.alcoolico;
+    }
+
     public int getID()
     {
         return ID;
@@ -54,7 +63,6 @@ public class Item {
         {
             return -1;
         }
-
         quantidade = quantidade + diferenca;
 
         return quantidade;
@@ -67,7 +75,7 @@ public class Item {
 
     public String toString()
     {
-        return String.format("%d,%s,%f,%d", ID, nome, valor, quantidade);
+        return String.format("%d,%s,%.2f,%d", ID, nome, valor, quantidade);
     }
 
     public Item fromString(String itemString)
