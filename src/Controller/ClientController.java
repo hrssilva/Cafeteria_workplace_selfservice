@@ -23,25 +23,41 @@ public class ClientController {
     {
         modelo = model;
         visao = view;
-        initView();
-    }
-
-    public void initView() 
-    {
-        visao.getComandaTextfield().setText("");
-        visao.getItemTextfield().setText("");
     }
 
     public void initController() 
     {
-        visao.getConsultarComandaButton().addActionListener(e -> consultarComanda());
-        visao.getAdicionarItemButton().addActionListener(e -> adicionarItem());
+        visao.getLoginButton().addActionListener(e -> login());
+        visao.getSolicitarComanda().addActionListener(e -> gerarComanda());
+    }
+
+    private void login()
+    {
+        String id = visao.getComandaTextfield().getText();
+        Comanda c = modelo.getComandaAtiva(id);
+        if(c != null)
+        {
+            visao.getComandaTextfield().setText("");
+            visao.mainFrame("Comanda - " + id, id);
+            visao.getConsultarComandaButton().addActionListener(e -> consultarComanda());
+            visao.getAdicionarItemButton().addActionListener(e -> adicionarItem());
+            visao.getLogoutButton().addActionListener(e -> logout());
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null, "Comanda invalida, por favor verifique e tente novamente.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void logout() 
+    {
+        visao.getFrame().dispose();
     }
 
     private void consultarComanda() 
     {
-        Comanda c = modelo.getComandaAtiva(visao.getComandaTextfield().getText());
-        if(c != null)
+        Comanda c = modelo.getComandaAtiva(visao.getIdLabel().getText());
+        if(c != null) // De acordo com a organizacao atual, esse teste deve ser desnecessario
         {
             String[] s = c.toString().split(":");
             String id = s[0], list = s[1];
@@ -58,8 +74,8 @@ public class ClientController {
     private void adicionarItem()
     {
         Item i = modelo.getStockItem(Integer.parseInt(visao.getItemTextfield().getText()));
-        Comanda c = modelo.getComandaAtiva(visao.getComandaTextfield().getText());
-        if(c != null)
+        Comanda c = modelo.getComandaAtiva(visao.getIdLabel().getText());
+        if(c != null) // De acordo com a organizacao atual, esse teste deve ser desnecessario
         {
             if(i == null)
             {
@@ -85,5 +101,22 @@ public class ClientController {
         {
             JOptionPane.showMessageDialog(null, "Comanda invalida, por favor verifique e tente novamente.", "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void popupOkGerarComanda()
+    {
+        int idade = Integer.parseInt(visao.getPopupTextfield().getText());
+
+        String id = modelo.CriarComanda(idade);
+
+        visao.getPopup().dispose();
+
+        JOptionPane.showMessageDialog(null, "Comanda : " + id, "Info", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void gerarComanda()
+    {
+        visao.popup("Criar comanda - Informar idade", "Por favor informe sua idade:");
+        visao.getPopupOk().addActionListener(e -> popupOkGerarComanda());
     }
 }

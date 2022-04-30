@@ -57,6 +57,7 @@ public class Comanda {
         if(add)
         {
             Item copy = new Item(item);
+            copy.MudarQuantidade(-(copy.getQuantidade() -1));
             itens.add(copy);
         }
 

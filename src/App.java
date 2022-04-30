@@ -47,7 +47,7 @@ public class App {
         comanda.AdicionarItem(item1);
         comanda.AdicionarItem(item2);
 
-        model.AtualizarComandaAtiva(ID, comanda);
+        //model.AtualizarComandaAtiva(ID, comanda);
 
         model.addStockItem(item0);
         model.addStockItem(item1);
