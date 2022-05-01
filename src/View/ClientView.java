@@ -23,6 +23,7 @@ public class ClientView {
     private JButton adicionarItemButton;
     private JButton logoutButton;
     private JButton solicitarEncerramento;
+    private JButton helpButton;
 
 
     public ClientView(String title) {
@@ -40,6 +41,7 @@ public class ClientView {
         adicionarItemButton = new JButton("Adicionar Item");
         logoutButton = new JButton("Sair");
         solicitarEncerramento = new JButton("Solicitar Encerramento");
+        helpButton = new JButton("Ajuda");
 
 
 
@@ -96,7 +98,8 @@ public class ClientView {
                         .addComponent(logoutButton))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                         .addComponent(consultarComandaButton)
-                        .addComponent(adicionarItemButton)));
+                        .addComponent(adicionarItemButton)
+                        .addComponent(helpButton)));
         layout.setVerticalGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(comandaLabel)
@@ -107,11 +110,12 @@ public class ClientView {
                         .addComponent(itemTextfield)
                         .addComponent(adicionarItemButton))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(logoutButton))
+                        .addComponent(logoutButton)
+                        .addComponent(helpButton))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                         .addComponent(solicitarEncerramento)));
 
-        layout.linkSize(SwingConstants.HORIZONTAL, consultarComandaButton, adicionarItemButton);
+        layout.linkSize(SwingConstants.HORIZONTAL, consultarComandaButton, adicionarItemButton, helpButton);
 
         frame.getContentPane().setLayout(layout);
         frame.setVisible(true);
@@ -198,6 +202,12 @@ public class ClientView {
     }
     public void setSolicitarEncerramento(JButton solicitarEncerramento) {
         this.solicitarEncerramento = solicitarEncerramento;
+    }
+    public JButton getHelpButton() {
+        return helpButton;
+    }
+    public void setHelpButton(JButton helpButton) {
+        this.helpButton = helpButton;
     }
 
 }   

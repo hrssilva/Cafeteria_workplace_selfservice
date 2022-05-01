@@ -52,8 +52,8 @@ public class ClientClerkObserver {
             popup.resetPopupButtons();
             popup.getPopupYesButton().addActionListener(e -> replyYesClientEncerramento());
             popup.getPopupNoButton().addActionListener(e -> replyNoClientEncerramento());
-            popup.initYesNoPopup("Solicitacao de Encerramento", "Solicitacao de Encerramento recebida. Encerrar comanda?", clerkView.getFrame());
             popup.spawnInfoPopup("Aguarde aprovacao pelo atendente.", clientView.getFrame());
+            popup.initYesNoPopup("Solicitacao de Encerramento", "Solicitacao de Encerramento recebida. Encerrar comanda?", clerkView.getFrame());
         }
         else
         {
@@ -65,7 +65,7 @@ public class ClientClerkObserver {
     {
         popup.getPopup().dispose();
         popup.resetPopupButtons();
-        popup.initInputPopup("Criar comanda - Informar idade", "Por favor informe sua idade:",clientView.getFrame());
+        popup.initInputPopup("Criar comanda - Informar idade", "Por favor informe sua idade:",clientView.getStartFrame());
         popup.getPopupOkButton().addActionListener(e -> popupOkGerarComanda());
     }
 

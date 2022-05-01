@@ -1,2 +1,3 @@
 0,agua,2.49,2
 1,salgado,8.99,1
+2,cachaca,0.19,1

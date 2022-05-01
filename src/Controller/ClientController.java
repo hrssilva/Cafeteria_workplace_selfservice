@@ -33,6 +33,19 @@ public class ClientController {
         visao.getConsultarComandaButton().addActionListener(e -> consultarComanda());
         visao.getAdicionarItemButton().addActionListener(e -> adicionarItem());
         visao.getLogoutButton().addActionListener(e -> logout());
+        visao.getHelpButton().addActionListener(e -> help());
+    }
+
+    private void help() 
+    {
+        String s = new String("Itens vendidos:\n\n");
+        for(Item item : modelo.getListaItens())
+        {
+           String paddedId = String.format("%-20s", "Numero: " + item.getID());
+            s = s + paddedId + "Nome: " + item.getNome() + "\n";
+        }
+        
+        popup.spawnInfoPopup(s, visao.getFrame());
     }
 
     private void login()

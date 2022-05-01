@@ -43,9 +43,9 @@ public class App {
         //TestController controller2 = new TestController(model, view2);
         //TestController controller3 = new TestController(model, view3);
         
-        Item item0 = new Item(0, "agua", 2.49f, 1, false);
+        Item item0 = new Item(0, "agua", 2.49f, 2, false);
         Item item1 = new Item(1, "salgado", 8.99f, 1, false);
-        Item item2 = new Item(0, "agua", 2.49f, 1, false);
+        Item item2 = new Item(2, "cachaca", 0.19f, 1, true);
 
         String ID = model.CriarComanda(16);
         Comanda comanda = model.getComandaAtiva(ID);
@@ -64,7 +64,7 @@ public class App {
         System.out.println(ID); 
 
         clientController.initController();
-        //controller2.initController();
+        clerkController.initController();
         //controller3.initController();
         
     }
