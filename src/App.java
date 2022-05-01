@@ -8,6 +8,7 @@ import src.View.ClerkView;
 import src.View.ManagerView;
 import src.Controller.ClientController;
 import src.Controller.ClerkController;
+import src.Controller.ClientClerkObserver;
 import src.Controller.ManagerController;
 
 import src.Controller.TestController;
@@ -32,10 +33,13 @@ public class App {
         Model model = new Model();
         ClientView clientView = new ClientView("Cliente");
         ManagerView managerView = new ManagerView("Gerente");
+        ClerkView clerkView = new ClerkView("Atendente");
         //TestView view2 = new TestView("Atendente");
         //TestView view3 = new TestView("Gerente");
         ClientController clientController = new ClientController(model, clientView);
         ManagerController managerController = new ManagerController(model, managerView);
+        ClerkController clerkController = new ClerkController(model, clerkView);
+        ClientClerkObserver clientClerkObserver = new ClientClerkObserver(model, clientView, clerkView);
         //TestController controller2 = new TestController(model, view2);
         //TestController controller3 = new TestController(model, view3);
         

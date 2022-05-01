@@ -22,24 +22,29 @@ public class ClientView {
     private JButton consultarComandaButton;
     private JButton adicionarItemButton;
     private JButton logoutButton;
-    
-
-    private JFrame inputPopup;
-    private JLabel popupLabel;
-    private JTextField popupTextfield;
-    private JButton popupOkButton;
 
 
     public ClientView(String title) {
-        startFrame = new JFrame(title);
-        startFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        startFrame.setSize(500, 500);
-        startFrame.setLocationRelativeTo(null);
-        
+        // StartFrame components
         comandaLabel = new JLabel("Comanda :");
         comandaTextfield = new JTextField();
         solicitarComanda = new JButton("Solicitar comanda");
         loginButton = new JButton("Entrar");
+
+        // MainFrame components
+        idLabel = new JLabel();
+        itemLabel = new JLabel("Numero Item :");
+        itemTextfield = new JTextField();
+        consultarComandaButton = new JButton("Consultar comanda");
+        adicionarItemButton = new JButton("Adicionar item");
+        logoutButton = new JButton("Sair");
+
+
+
+        startFrame = new JFrame(title);
+        startFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        startFrame.setSize(500, 500);
+        startFrame.setLocationRelativeTo(null);
 
         GroupLayout layout = new GroupLayout(startFrame.getContentPane());
         layout.setAutoCreateGaps(true);
@@ -70,14 +75,10 @@ public class ClientView {
         frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.setSize(500, 500);
-        frame.setLocationRelativeTo(null);
-        
-        idLabel = new JLabel(ID);
-        itemLabel = new JLabel("Numero Item :");
-        itemTextfield = new JTextField();
-        consultarComandaButton = new JButton("Consultar comanda");
-        adicionarItemButton = new JButton("Adicionar item");
-        logoutButton = new JButton("Sair");
+        frame.setLocationRelativeTo(startFrame);
+
+        idLabel.setText(ID);
+        itemTextfield.setText("");
 
         GroupLayout layout = new GroupLayout(frame.getContentPane());
         layout.setAutoCreateGaps(true);
@@ -109,42 +110,6 @@ public class ClientView {
 
         frame.getContentPane().setLayout(layout);
         frame.setVisible(true);
-    }
-
-    public void popup(String title, String message)
-    {
-        inputPopup = new JFrame(title);
-        inputPopup.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        inputPopup.setSize(250, 250);
-        inputPopup.setLocationRelativeTo(frame);
-
-        popupLabel = new JLabel(message);
-        popupTextfield = new JTextField();
-        popupOkButton = new JButton("OK");
-
-        GroupLayout layout = new GroupLayout(inputPopup.getContentPane());
-        layout.setAutoCreateGaps(true);
-        layout.setAutoCreateContainerGaps(true);
-        layout.setHorizontalGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(popupLabel)
-                        .addComponent(popupTextfield)
-                        .addComponent(popupOkButton)));
-        
-        layout.setVerticalGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(popupLabel))
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(popupTextfield))
-                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
-                        .addComponent(popupOkButton)));
-
-        layout.linkSize(SwingConstants.VERTICAL, popupTextfield, popupOkButton);
-
-        popupTextfield.setText("");
-
-        inputPopup.getContentPane().setLayout(layout);
-        inputPopup.setVisible(true);
     }
 
 
@@ -224,27 +189,5 @@ public class ClientView {
         this.logoutButton = logoutButton;
     }
 
-
-
-    public JFrame getPopup()
-    {
-        return inputPopup;
-    }
-    public void setPopup(JFrame popup)
-    {
-        this.inputPopup = popup;
-    }
-    public JButton getPopupOk() {
-        return popupOkButton;
-    }
-    public void setPopupOk(JButton popupOkButton) {
-        this.popupOkButton = popupOkButton;
-    }
-    public JTextField getPopupTextfield() {
-        return popupTextfield;
-    }
-    public void setPopupTextfield(JTextField popupTextfield) {
-        this.popupTextfield = popupTextfield;
-    }
 
 }   

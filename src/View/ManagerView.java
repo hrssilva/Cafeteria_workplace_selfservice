@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class ManagerView extends ClerkView {
+public class ManagerView{
     private JFrame startFrame;
     private JLabel comandaLabel;
     private JTextField comandaTextfield;
