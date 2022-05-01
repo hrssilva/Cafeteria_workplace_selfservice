@@ -56,8 +56,14 @@ public class ClerkController {
     private void encerrarComanda()
     {
         String ID = visao.getComandaTextfield().getText();
-        if(modelo.DesativarComanda(ID) != null)
+        Comanda c = modelo.getComandaAtiva(ID);
+        if(c != null)
         {
+            String[] s = c.toString().split(":");
+            String id = s[0], list = s[1];
+            list = list.replace("},", "\n").replace("{","").replace(";","");
+            popup.spawnInfoPopup("Comanda : " + id + "\n[id,nome,valor,qtd]\n" + list, visao.getFrame());
+            modelo.DesativarComanda(ID);
             popup.spawnInfoPopup("Comanda " + ID + " encerrada", visao.getFrame());
         }
         else

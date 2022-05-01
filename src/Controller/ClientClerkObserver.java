@@ -3,7 +3,7 @@ package src.Controller;
 import src.View.ClientView;
 import src.View.ClerkView;
 import src.View.PopupSpawner;
-
+import src.Model.Comanda;
 import src.Model.Model;
 
 /* 
@@ -47,12 +47,21 @@ public class ClientClerkObserver {
     private void notifyClerkSolicitarEncerramento()
     {
         String ID = clientView.getIdLabel().getText();
-        if(modelo.getComandaAtiva(ID) != null)
+        Comanda c = modelo.getComandaAtiva(ID);
+        if(c != null)
         {
             popup.resetPopupButtons();
             popup.getPopupYesButton().addActionListener(e -> replyYesClientEncerramento());
             popup.getPopupNoButton().addActionListener(e -> replyNoClientEncerramento());
             popup.spawnInfoPopup("Aguarde aprovacao pelo atendente.", clientView.getFrame());
+            
+           
+            
+            String[] s = c.toString().split(":");
+            String id = s[0], list = s[1];
+            list = list.replace("},", "\n").replace("{","").replace(";","");
+            popup.spawnInfoPopup("Comanda : " + id + "\n[id,nome,valor,qtd]\n" + list, clerkView.getFrame());
+            
             popup.initYesNoPopup("Solicitacao de Encerramento", "Solicitacao de Encerramento recebida. Encerrar comanda?", clerkView.getFrame());
         }
         else
@@ -86,6 +95,7 @@ public class ClientClerkObserver {
             popup.spawnInfoPopup("Comanda " + ID + " encerrada", clientView.getFrame());
         }
     }
+    
 
     private void replyNoClientEncerramento()
     {
