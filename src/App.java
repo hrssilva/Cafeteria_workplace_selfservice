@@ -31,9 +31,11 @@ public class App {
         */
         Model model = new Model();
         ClientView clientView = new ClientView("Cliente");
+        ManagerView managerView = new ManagerView("Gerente");
         //TestView view2 = new TestView("Atendente");
         //TestView view3 = new TestView("Gerente");
         ClientController clientController = new ClientController(model, clientView);
+        ManagerController managerController = new ManagerController(model, managerView);
         //TestController controller2 = new TestController(model, view2);
         //TestController controller3 = new TestController(model, view3);
         
