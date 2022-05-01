@@ -22,13 +22,14 @@ public class PopupSpawner {
         popupTextfield = new JTextField();
         button1 = new JButton();
         button2 = new JButton();
+
+        popupLabel.setHorizontalAlignment(JLabel.CENTER);
     }
 
     public void initInputPopup(String title, String message, JFrame parent)
     {
         popup = new JFrame(title);
         popup.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        popup.setSize(250, 250);
         popup.setLocationRelativeTo(parent);
 
         popupLabel.setText(message);
@@ -57,6 +58,7 @@ public class PopupSpawner {
         popupTextfield.setText("");
 
         popup.getContentPane().setLayout(layout);
+        popup.pack();
         popup.setVisible(true);
     }
 
@@ -64,7 +66,6 @@ public class PopupSpawner {
     {
         popup = new JFrame(title);
         popup.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        popup.setSize(250, 250);
         popup.setLocationRelativeTo(parent);
 
         popupLabel.setText(message);
@@ -77,8 +78,11 @@ public class PopupSpawner {
         layout.setHorizontalGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                         .addComponent(popupLabel)
-                        .addComponent(button1)
-                        .addComponent(button2)));
+                        .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                                        .addComponent(button1))
+                                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
+                                        .addComponent(button2)))));
         
         layout.setVerticalGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
@@ -92,6 +96,7 @@ public class PopupSpawner {
         popupTextfield.setText("");
 
         popup.getContentPane().setLayout(layout);
+        popup.pack();
         popup.setVisible(true);
     }
 

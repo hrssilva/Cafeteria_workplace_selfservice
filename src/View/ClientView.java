@@ -22,22 +22,24 @@ public class ClientView {
     private JButton consultarComandaButton;
     private JButton adicionarItemButton;
     private JButton logoutButton;
+    private JButton solicitarEncerramento;
 
 
     public ClientView(String title) {
         // StartFrame components
         comandaLabel = new JLabel("Comanda :");
         comandaTextfield = new JTextField();
-        solicitarComanda = new JButton("Solicitar comanda");
+        solicitarComanda = new JButton("Solicitar Comanda");
         loginButton = new JButton("Entrar");
 
         // MainFrame components
         idLabel = new JLabel();
         itemLabel = new JLabel("Numero Item :");
         itemTextfield = new JTextField();
-        consultarComandaButton = new JButton("Consultar comanda");
-        adicionarItemButton = new JButton("Adicionar item");
+        consultarComandaButton = new JButton("Consultar Comanda");
+        adicionarItemButton = new JButton("Adicionar Item");
         logoutButton = new JButton("Sair");
+        solicitarEncerramento = new JButton("Solicitar Encerramento");
 
 
 
@@ -90,6 +92,7 @@ public class ClientView {
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                         .addComponent(idLabel)
                         .addComponent(itemTextfield)
+                        .addComponent(solicitarEncerramento)
                         .addComponent(logoutButton))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.CENTER)
                         .addComponent(consultarComandaButton)
@@ -104,7 +107,9 @@ public class ClientView {
                         .addComponent(itemTextfield)
                         .addComponent(adicionarItemButton))
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                        .addComponent(logoutButton)));
+                        .addComponent(logoutButton))
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
+                        .addComponent(solicitarEncerramento)));
 
         layout.linkSize(SwingConstants.HORIZONTAL, consultarComandaButton, adicionarItemButton);
 
@@ -188,6 +193,11 @@ public class ClientView {
     public void setLogoutButton(JButton logoutButton) {
         this.logoutButton = logoutButton;
     }
-
+    public JButton getSolicitarEncerramento() {
+        return solicitarEncerramento;
+    }
+    public void setSolicitarEncerramento(JButton solicitarEncerramento) {
+        this.solicitarEncerramento = solicitarEncerramento;
+    }
 
 }   

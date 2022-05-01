@@ -64,7 +64,7 @@ public class Model {
             comandasInativas.put(ID, comanda);
             return ID;
         }
-        return "";
+        return null;
     }
 
 
