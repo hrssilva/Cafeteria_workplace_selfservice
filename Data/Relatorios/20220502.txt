@@ -1,0 +1,2 @@
+9975:{0,agua,2.49,1},WIFI_MINUTOS=0.0,TOTAL=2.49;
+7852:{1,salgado,8.99,1},{2,cachaça,0.19,1},WIFI_MINUTOS=0.0,TOTAL=9.18;

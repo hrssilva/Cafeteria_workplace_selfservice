@@ -6,11 +6,12 @@ import src.View.ClerkView;
 import src.View.PopupSpawner;
 public class ClerkController {
 
-    private Model modelo;
+    protected Model modelo;
     private ClerkView visao;
-    private PopupSpawner popup;
+    protected PopupSpawner popup;
     
 
+    public ClerkController(){}
     public ClerkController(Model model, ClerkView view)
     {
         modelo = model;
@@ -26,17 +27,18 @@ public class ClerkController {
         visao.getLimparComandaButton().addActionListener(e -> limparComanda());
     }
 
-    private void limparComanda() {
+    protected void limparComanda() {
        visao.getComandaTextfield().setText("");
     }
 
-    private void gerarComanda()
+    protected void gerarComanda()
     {
+        popup.resetPopupButtons();
         popup.initInputPopup("Criar comanda - Informar idade", "Por favor informe a idade do cliente:",visao.getFrame());
         popup.getPopupOkButton().addActionListener(e -> popupOkGerarComanda());
     }
 
-    private void consultarComanda()
+    protected void consultarComanda()
     {
         Comanda c = modelo.getComandaAtiva(visao.getComandaTextfield().getText());
         if(c != null) 
@@ -53,7 +55,7 @@ public class ClerkController {
         }
     }
 
-    private void encerrarComanda()
+    protected void encerrarComanda()
     {
         String ID = visao.getComandaTextfield().getText();
         Comanda c = modelo.getComandaAtiva(ID);

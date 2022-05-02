@@ -1,1 +1,0 @@
-4783:{0,agua,2.49,1},{1,salgado,8.99,1},WIFI_MINUTOS=0.0,TOTAL=11.48;

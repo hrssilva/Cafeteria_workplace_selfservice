@@ -90,4 +90,24 @@ public class Item {
         return this;
     }
 
+    public void setID(int iD) {
+        ID = iD;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public void setValor(float valor) {
+        this.valor = valor;
+    }
+
+    public void setQuantidade(int quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public void setAlcoolico(boolean alcoolico) {
+        this.alcoolico = alcoolico;
+    }
+    
 }

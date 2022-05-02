@@ -8,15 +8,23 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class ClerkView {
-    private JFrame frame;
-    private JLabel comandaLabel;
-    private JTextField comandaTextfield;
-    private JButton consultarComandaButton;
-    private JButton gerarComandaButton;
-    private JButton encerrarComandaButton;
-    private JButton limparComandaButton;
+    protected JFrame frame;
+    protected JLabel comandaLabel;
+    protected JTextField comandaTextfield;
+    protected JButton consultarComandaButton;
+    protected JButton gerarComandaButton;
+    protected JButton encerrarComandaButton;
+    protected JButton limparComandaButton;
 
 
+    public ClerkView(){
+        comandaLabel = new JLabel("Comanda :");
+        comandaTextfield = new JTextField();
+        consultarComandaButton = new JButton("Consultar Comanda");
+        gerarComandaButton = new JButton("Gerar Comanda");
+        encerrarComandaButton = new JButton("Encerrar Comanda");
+        limparComandaButton = new JButton("Limpar");
+    }
     public ClerkView(String title)
     {
         comandaLabel = new JLabel("Comanda :");
@@ -28,7 +36,7 @@ public class ClerkView {
         
         frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(500, 500);
+        frame.setSize(800, 800);
         frame.setLocationRelativeTo(null);
 
         GroupLayout layout = new GroupLayout(frame.getContentPane());

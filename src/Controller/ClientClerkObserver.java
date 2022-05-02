@@ -29,11 +29,13 @@ public class ClientClerkObserver {
         this.clerkView = clerkView;
         this.modelo = modelo;
         popup = new PopupSpawner();
-
+    }
+    
+    public void initController() 
+    {
         clientView.getSolicitarComanda().addActionListener(e -> notifyClerkSolicitarComanda());
         clientView.getSolicitarEncerramento().addActionListener(e -> notifyClerkSolicitarEncerramento());
     }
-    
     
     private void notifyClerkSolicitarComanda()
     {
@@ -41,7 +43,7 @@ public class ClientClerkObserver {
         popup.getPopupYesButton().addActionListener(e -> replyYesClientComanda());
         popup.getPopupNoButton().addActionListener(e -> replyNoClientComanda());
         popup.initYesNoPopup("Solicitacao de Comanda", "Solicitacao de comanda recebida. Gerar comanda?", clerkView.getFrame());
-        popup.spawnInfoPopup("Aguarde aprovacao pelo atendente.", clientView.getStartFrame());
+        popup.spawnInfoPopup("Aguarde aprovacao pelo atendente.", clientView.getFrame());
     }
 
     private void notifyClerkSolicitarEncerramento()
@@ -53,7 +55,7 @@ public class ClientClerkObserver {
             popup.resetPopupButtons();
             popup.getPopupYesButton().addActionListener(e -> replyYesClientEncerramento());
             popup.getPopupNoButton().addActionListener(e -> replyNoClientEncerramento());
-            popup.spawnInfoPopup("Aguarde aprovacao pelo atendente.", clientView.getFrame());
+            popup.spawnInfoPopup("Aguarde aprovacao pelo atendente.", clientView.getMainFrame());
             
            
             
@@ -66,7 +68,7 @@ public class ClientClerkObserver {
         }
         else
         {
-            popup.spawnErrorPopup("Comanda " + ID + " nao esta ativa!", clientView.getFrame());
+            popup.spawnErrorPopup("Comanda " + ID + " nao esta ativa!", clientView.getMainFrame());
         }
     }
     
@@ -74,14 +76,14 @@ public class ClientClerkObserver {
     {
         popup.getPopup().dispose();
         popup.resetPopupButtons();
-        popup.initInputPopup("Criar comanda - Informar idade", "Por favor informe sua idade:",clientView.getStartFrame());
+        popup.initInputPopup("Criar comanda - Informar idade", "Por favor informe sua idade:",clientView.getFrame());
         popup.getPopupOkButton().addActionListener(e -> popupOkGerarComanda());
     }
 
     private void replyNoClientComanda()
     {
         popup.getPopup().dispose();
-        popup.spawnErrorPopup("Solicitacao negada.", clientView.getFrame());
+        popup.spawnErrorPopup("Solicitacao negada.", clientView.getMainFrame());
     }
 
     private void replyYesClientEncerramento()
@@ -92,7 +94,7 @@ public class ClientClerkObserver {
         if(modelo.DesativarComanda(ID) != null)
         {
             popup.spawnInfoPopup("Comanda " + ID + " encerrada", clerkView.getFrame());
-            popup.spawnInfoPopup("Comanda " + ID + " encerrada", clientView.getFrame());
+            popup.spawnInfoPopup("Comanda " + ID + " encerrada", clientView.getMainFrame());
         }
     }
     
@@ -100,7 +102,7 @@ public class ClientClerkObserver {
     private void replyNoClientEncerramento()
     {
         popup.getPopup().dispose();
-        popup.spawnErrorPopup("Solicitacao negada.", clientView.getFrame());
+        popup.spawnErrorPopup("Solicitacao negada.", clientView.getMainFrame());
     }
 
     private void popupOkGerarComanda()
@@ -113,7 +115,7 @@ public class ClientClerkObserver {
 
             popup.getPopup().dispose();
 
-            popup.spawnInfoPopup("Comanda : " + id, clientView.getStartFrame());
+            popup.spawnInfoPopup("Comanda : " + id, clientView.getFrame());
             popup.spawnInfoPopup("Comanda " + id + " gerada.", clerkView.getFrame());
         }
         catch(NumberFormatException e)

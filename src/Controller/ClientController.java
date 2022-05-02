@@ -45,7 +45,7 @@ public class ClientController {
             s = s + paddedId + "Nome: " + item.getNome() + "\n";
         }
         
-        popup.spawnInfoPopup(s, visao.getFrame());
+        popup.spawnInfoPopup(s, visao.getMainFrame());
     }
 
     private void login()
@@ -59,13 +59,13 @@ public class ClientController {
         }
         else
         {
-            popup.spawnErrorPopup("Comanda invalida, por favor verifique e tente novamente.", visao.getStartFrame());
+            popup.spawnErrorPopup("Comanda invalida, por favor verifique e tente novamente.", visao.getFrame());
         }
     }
 
     private void logout() 
     {
-        visao.getFrame().dispose();
+        visao.getMainFrame().dispose();
     }
 
     private void consultarComanda() 
@@ -77,11 +77,11 @@ public class ClientController {
             String id = s[0], list = s[1];
             list = list.replace("},", "\n").replace("{","").replace(";","");
 
-            popup.spawnInfoPopup("Comanda : " + id + "\n[id,nome,valor,qtd]\n" + list, visao.getFrame());
+            popup.spawnInfoPopup("Comanda : " + id + "\n[id,nome,valor,qtd]\n" + list, visao.getMainFrame());
         }
         else
         {
-            popup.spawnErrorPopup("Comanda invalida, por favor verifique e tente novamente.", visao.getFrame());
+            popup.spawnErrorPopup("Comanda invalida, por favor verifique e tente novamente.", visao.getMainFrame());
         }
     }
 
@@ -93,27 +93,27 @@ public class ClientController {
         {
             if(i == null)
             {
-                popup.spawnErrorPopup("Numero de item não existe, por favor verifique e tente novamente.", visao.getFrame());
+                popup.spawnErrorPopup("Numero de item não existe, por favor verifique e tente novamente.", visao.getMainFrame());
             }
             else if (i.getQuantidade() == 0)
             {
-                popup.spawnWarnPopup("Infelizmente o item nao esta em estoque.", visao.getFrame());
+                popup.spawnWarnPopup("Infelizmente o item nao esta em estoque.", visao.getMainFrame());
             }
             else if (i.isAlcoolico() && !c.isLegalAge())
             {
-                popup.spawnWarnPopup("Este item so pode ser comprado por maiores de idade.", visao.getFrame());
+                popup.spawnWarnPopup("Este item so pode ser comprado por maiores de idade.", visao.getMainFrame());
             }
             else
             {
                 c.AdicionarItem(i);
                 i.MudarQuantidade(-1);
 
-                popup.spawnInfoPopup("Comanda : " + c.getID() + "\n" + "Item \"" + i.getNome() + "\" adicionado!", visao.getFrame());
+                popup.spawnInfoPopup("Comanda : " + c.getID() + "\n" + "Item \"" + i.getNome() + "\" adicionado!", visao.getMainFrame());
             }
         }
         else
         {
-            popup.spawnErrorPopup("Comanda invalida, por favor verifique e tente novamente.", visao.getFrame());
+            popup.spawnErrorPopup("Comanda invalida, por favor verifique e tente novamente.", visao.getMainFrame());
         }
     }
 

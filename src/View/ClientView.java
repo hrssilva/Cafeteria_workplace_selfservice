@@ -8,14 +8,14 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class ClientView {
-    private JFrame startFrame;
+    private JFrame frame;
     private JLabel comandaLabel;
     private JTextField comandaTextfield;
     private JButton solicitarComanda;
     private JButton loginButton;
 
 
-    private JFrame frame;
+    private JFrame mainFrame;
     private JLabel itemLabel;
     private JLabel idLabel;
     private JTextField itemTextfield;
@@ -27,7 +27,7 @@ public class ClientView {
 
 
     public ClientView(String title) {
-        // StartFrame components
+        // Frame components
         comandaLabel = new JLabel("Comanda :");
         comandaTextfield = new JTextField();
         solicitarComanda = new JButton("Solicitar Comanda");
@@ -45,12 +45,12 @@ public class ClientView {
 
 
 
-        startFrame = new JFrame(title);
-        startFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        startFrame.setSize(500, 500);
-        startFrame.setLocationRelativeTo(null);
+        frame = new JFrame(title);
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frame.setSize(800, 800);
+        frame.setLocationRelativeTo(null);
 
-        GroupLayout layout = new GroupLayout(startFrame.getContentPane());
+        GroupLayout layout = new GroupLayout(frame.getContentPane());
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
         layout.setHorizontalGroup(layout.createSequentialGroup()
@@ -70,21 +70,21 @@ public class ClientView {
                         .addComponent(loginButton)));
         layout.linkSize(SwingConstants.VERTICAL, comandaTextfield, loginButton);
 
-        startFrame.getContentPane().setLayout(layout);
-        startFrame.setVisible(true);
+        frame.getContentPane().setLayout(layout);
+        frame.setVisible(true);
     }
 
     public void mainFrame(String title, String ID)
     {
-        frame = new JFrame(title);
-        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frame.setSize(500, 500);
-        frame.setLocationRelativeTo(startFrame);
+       mainFrame = new JFrame(title);
+       mainFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+       mainFrame.setSize(800, 800);
+       mainFrame.setLocationRelativeTo(frame);
 
         idLabel.setText(ID);
         itemTextfield.setText("");
 
-        GroupLayout layout = new GroupLayout(frame.getContentPane());
+        GroupLayout layout = new GroupLayout(mainFrame.getContentPane());
         layout.setAutoCreateGaps(true);
         layout.setAutoCreateContainerGaps(true);
         layout.setHorizontalGroup(layout.createSequentialGroup()
@@ -117,97 +117,126 @@ public class ClientView {
 
         layout.linkSize(SwingConstants.HORIZONTAL, consultarComandaButton, adicionarItemButton, helpButton);
 
-        frame.getContentPane().setLayout(layout);
-        frame.setVisible(true);
+       mainFrame.getContentPane().setLayout(layout);
+       mainFrame.setVisible(true);
     }
-
-
-    public JFrame getStartFrame() {
-        return startFrame;
-    }
-    public void setStartFrame(JFrame startFrame) {
-        this.startFrame = startFrame;
-    }
-    public JLabel getComandaLabel() {
-        return comandaLabel;
-    }
-    public void setComandaLabel(JLabel comandaLabel) {
-        this.comandaLabel = comandaLabel;
-    }
-    public JTextField getComandaTextfield() {
-        return comandaTextfield;
-    }
-    public void setComandaTextfield(JTextField comandaTextfield) {
-        this.comandaTextfield = comandaTextfield;
-    }
-    public JButton getSolicitarComanda() {
-        return solicitarComanda;
-    }
-    public void setSolicitarComanda(JButton solicitarComanda) {
-        this.solicitarComanda = solicitarComanda;
-    }
-    public JButton getLoginButton() {
-        return loginButton;
-    }
-    public void setLoginButton(JButton loginButton) {
-        this.loginButton = loginButton;
-    }
-    
-
 
     public JFrame getFrame() {
         return frame;
     }
+
     public void setFrame(JFrame frame) {
         this.frame = frame;
     }
-    public JLabel getIdLabel() {
-        return idLabel;
+
+    public JLabel getComandaLabel() {
+        return comandaLabel;
     }
-    public void setIdLabel(JLabel idLabel) {
-        this.idLabel = idLabel;
+
+    public void setComandaLabel(JLabel comandaLabel) {
+        this.comandaLabel = comandaLabel;
     }
+
+    public JTextField getComandaTextfield() {
+        return comandaTextfield;
+    }
+
+    public void setComandaTextfield(JTextField comandaTextfield) {
+        this.comandaTextfield = comandaTextfield;
+    }
+
+    public JButton getSolicitarComanda() {
+        return solicitarComanda;
+    }
+
+    public void setSolicitarComanda(JButton solicitarComanda) {
+        this.solicitarComanda = solicitarComanda;
+    }
+
+    public JButton getLoginButton() {
+        return loginButton;
+    }
+
+    public void setLoginButton(JButton loginButton) {
+        this.loginButton = loginButton;
+    }
+
+    public JFrame getMainFrame() {
+        return mainFrame;
+    }
+
+    public void setMainFrame(JFrame mainFrame) {
+        this.mainFrame = mainFrame;
+    }
+
     public JLabel getItemLabel() {
         return itemLabel;
     }
+
     public void setItemLabel(JLabel itemLabel) {
         this.itemLabel = itemLabel;
     }
+
+    public JLabel getIdLabel() {
+        return idLabel;
+    }
+
+    public void setIdLabel(JLabel idLabel) {
+        this.idLabel = idLabel;
+    }
+
     public JTextField getItemTextfield() {
         return itemTextfield;
     }
+
     public void setItemTextfield(JTextField itemTextfield) {
         this.itemTextfield = itemTextfield;
     }
+
     public JButton getConsultarComandaButton() {
         return consultarComandaButton;
     }
+
     public void setConsultarComandaButton(JButton consultarComandaButton) {
         this.consultarComandaButton = consultarComandaButton;
     }
+
     public JButton getAdicionarItemButton() {
         return adicionarItemButton;
     }
+
     public void setAdicionarItemButton(JButton adicionarItemButton) {
         this.adicionarItemButton = adicionarItemButton;
     }
+
     public JButton getLogoutButton() {
         return logoutButton;
     }
+
     public void setLogoutButton(JButton logoutButton) {
         this.logoutButton = logoutButton;
     }
+
     public JButton getSolicitarEncerramento() {
         return solicitarEncerramento;
     }
+
     public void setSolicitarEncerramento(JButton solicitarEncerramento) {
         this.solicitarEncerramento = solicitarEncerramento;
     }
+
     public JButton getHelpButton() {
         return helpButton;
     }
+
     public void setHelpButton(JButton helpButton) {
         this.helpButton = helpButton;
     }
 
+    
+    
+    
+
+
+    
 }   
